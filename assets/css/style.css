@@ -6,7 +6,7 @@
 /* ========================================
    Google Fonts Import
    ======================================== */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap');
 
 /* ========================================
    CSS Reset & Base Styles
@@ -18,7 +18,7 @@
 }
 
 body {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background: #0a0a0a;
     color: #ffffff;
     overflow-x: hidden;
@@ -99,8 +99,8 @@ nav {
 
 .logo h1 {
     font-size: 1.5rem;
-    font-weight: 600;
-    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 .nav-links {
@@ -149,9 +149,9 @@ nav {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: #ffffff;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    letter-spacing: -0.5px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 200;
+    letter-spacing: 0px;
 }
 
 .hero p {
@@ -201,7 +201,7 @@ nav {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     color: #00d4ff;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: 600;
 }
 
@@ -242,9 +242,9 @@ nav {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    letter-spacing: -0.5px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 200;
+    letter-spacing: 0px;
 }
 
 /* Lampi specific gradient */
@@ -297,7 +297,7 @@ nav {
     font-size: 2rem;
     margin-bottom: 2rem;
     color: #00d4ff;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: 600;
 }
 
