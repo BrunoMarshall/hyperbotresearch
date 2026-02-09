@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - HyperbotResearch</title>
+    <link rel="icon" type="image/svg+xml" href="assets/HyperbotResearch.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0a0a0a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .product-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #00d4ff;
+        }
+
+        .product-card .subtitle {
+            font-size: 1rem;
+            color: #aaaaaa;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .product-card p {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: #888888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <!-- Floating Particles -->
+    <script>
+        for(let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            document.body.appendChild(particle);
+        }
+    </script>
+
+    <header>
+        <nav>
+            <a href="https://hyperbotresearch.com" class="logo">
+                <img src="assets/HyperbotResearch.svg" alt="HyperbotResearch">
+                <h1>HyperbotResearch</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://hyperbotresearch.com">Home</a></li>
+                <li><a href="https://products.hyperbotresearch.com">Products</a></li>
+                <li><a href="https://hyperbotresearch.com/roadmap">Roadmap</a></li>
+                <li><a href="https://hyperbotresearch.com/partners">Partners</a></li>
+                <li><a href="https://hyperbotresearch.com/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Our Products</h2>
+        <p>Explore our ecosystem of autonomous robots and decentralized communication systems. From experimental prototypes to production-ready solutions, each product pushes the boundaries of what's possible with autonomous agents and blockchain technology.</p>
+    </section>
+
+    <section class="products-grid">
+        <div class="product-card" onclick="window.location.href='dirty/'">
+            <img src="assets/logos/dirty_logo_01.png" alt="Dirty Robot" class="product-logo">
+            <h3>Dirty</h3>
+            <p class="subtitle">The Origin Prototype</p>
+            <p>The very first prototype—a Frankenstein build that validated robot-to-robot communication and autonomous transfers. The foundation for everything that followed.</p>
+            <a href="dirty/" class="btn">Learn More</a>
+        </div>
+
+        <div class="product-card" onclick="window.location.href='discret/'">
+            <img src="assets/logos/discret_logo_01.png" alt="Discret Robot" class="product-logo">
+            <h3>Discret</h3>
+            <p class="subtitle">Invisible Utility for the Smart Home</p>
+            <p>A fully autonomous mobile robot disguised as an ordinary table. Silent, unobtrusive assistance that moves throughout your home exactly when and where needed.</p>
+            <a href="discret/" class="btn">Learn More</a>
+        </div>
+
+        <div class="product-card" onclick="window.location.href='lampi/'">
+            <img src="assets/logos/lampi_logo_01.png" alt="Lampi Robot" class="product-logo">
+            <h3>Lampi</h3>
+            <p class="subtitle">Light, Exactly Where You Need It</p>
+            <p>A mobile robotic lamp that delivers dynamic lighting on demand. Integrates IoT and blockchain communication to redefine lighting as a service.</p>
+            <a href="lampi/" class="btn">Learn More</a>
+        </div>
+
+        <div class="product-card" onclick="window.location.href='lorachain/'">
+            <img src="assets/logos/lorachain_logo_01.png" alt="LoRaChain" class="product-logo">
+            <h3>LoRaChain</h3>
+            <p class="subtitle">Decentralized Communication Beyond the Internet</p>
+            <p>Long-range communication network for remote environments. Enables messaging, payments, and coordination where traditional internet cannot reach.</p>
+            <a href="lorachain/" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 HyperbotResearch. Autonomous Agents. Decentralized Future.</p>
+    </footer>
+</body>
+</html>
