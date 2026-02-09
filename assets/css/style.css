@@ -238,30 +238,13 @@ nav {
 .product-info h2 {
     font-size: 3rem;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, #00d4ff, #7b2ff7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff;
     font-family: 'Nunito Sans', sans-serif;
-    font-weight: 200;
+    font-weight: 700;
     letter-spacing: 0px;
 }
 
-/* Lampi specific gradient */
-.product-info h2.lampi-gradient {
-    background: linear-gradient(135deg, #ffd700, #ff8c00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* LoRaChain specific gradient */
-.product-info h2.lorachain-gradient {
-    background: linear-gradient(135deg, #00ff88, #00d4ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+/* Lampi and LoRaChain use same white color as others */
 
 .product-info .subtitle {
     font-size: 1.3rem;
