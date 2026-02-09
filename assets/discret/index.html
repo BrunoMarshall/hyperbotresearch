@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - HyperbotResearch</title>
-    <link rel="icon" type="image/svg+xml" href="assets/HyperbotResearch.svg">
+    <title>Discret - Invisible Utility | HyperbotResearch</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/HyperbotResearch.svg">
     <style>
         * {
             margin: 0;
@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -38,24 +37,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Floating particles */
-        .particle {
-            position: fixed;
-            width: 3px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float 20s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
-        }
-
-        /* Header */
         header {
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
@@ -92,116 +73,161 @@
             font-weight: 600;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
+        .back-btn {
+            padding: 0.6rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
             text-decoration: none;
-            transition: color 0.3s;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .nav-links a:hover {
-            color: #00d4ff;
+        .back-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
         }
 
-        /* Hero Section */
-        .hero {
+        .hero-product {
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
-            text-align: center;
         }
 
-        .hero h2 {
+        .product-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .product-info h2 {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             background: linear-gradient(135deg, #00d4ff, #7b2ff7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #cccccc;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
-
-        /* Products Grid */
-        .products-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
-            border-color: rgba(0, 212, 255, 0.5);
-        }
-
-        .product-logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            display: block;
-            border-radius: 10px;
-        }
-
-        .product-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: #00d4ff;
-        }
-
-        .product-card .subtitle {
-            font-size: 1rem;
+        .product-info .subtitle {
+            font-size: 1.3rem;
             color: #aaaaaa;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             font-style: italic;
         }
 
-        .product-card p {
+        .product-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: #cccccc;
-            line-height: 1.6;
             margin-bottom: 1.5rem;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-weight: 600;
+        .product-image {
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        .section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
         }
 
-        /* Footer */
+        .section h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #00d4ff;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .feature-card h4 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .diagram-placeholder {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .diagram-placeholder svg {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+        }
+
+        .tech-specs {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tech-specs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-specs li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+        }
+
+        .tech-specs li:last-child {
+            border-bottom: none;
+        }
+
+        .tech-specs strong {
+            color: #00d4ff;
+            margin-right: 1rem;
+        }
+
         footer {
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
@@ -215,22 +241,13 @@
             color: #888888;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .products-grid {
+            .product-header {
                 grid-template-columns: 1fr;
+            }
+
+            .product-info h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -238,71 +255,141 @@
 <body>
     <div class="animated-bg"></div>
 
-    <!-- Floating Particles -->
-    <script>
-        for(let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-            document.body.appendChild(particle);
-        }
-    </script>
-
     <header>
         <nav>
             <a href="https://hyperbotresearch.com" class="logo">
-                <img src="assets/HyperbotResearch.svg" alt="HyperbotResearch">
+                <img src="../assets/HyperbotResearch.svg" alt="HyperbotResearch">
                 <h1>HyperbotResearch</h1>
             </a>
-            <ul class="nav-links">
-                <li><a href="https://hyperbotresearch.com">Home</a></li>
-                <li><a href="https://products.hyperbotresearch.com">Products</a></li>
-                <li><a href="https://hyperbotresearch.com/roadmap">Roadmap</a></li>
-                <li><a href="https://hyperbotresearch.com/partners">Partners</a></li>
-                <li><a href="https://hyperbotresearch.com/contact">Contact</a></li>
-            </ul>
+            <a href="../" class="back-btn">← Back to Products</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <h2>Our Products</h2>
-        <p>Explore our ecosystem of autonomous robots and decentralized communication systems. From experimental prototypes to production-ready solutions, each product pushes the boundaries of what's possible with autonomous agents and blockchain technology.</p>
+    <section class="hero-product">
+        <div class="product-header">
+            <div class="product-info">
+                <h2>Discret</h2>
+                <p class="subtitle">Invisible Utility for the Smart Home</p>
+                <p>Discret is designed to blend into everyday life. At first glance, it appears to be an ordinary table—but beneath the surface, it is a fully autonomous mobile robot.</p>
+                <p>Discret can move freely throughout the home, navigating to any area where it is needed. It integrates seamless communication between devices and is controlled through a dedicated app, enabling silent, unobtrusive assistance without disrupting daily life.</p>
+                <p><strong>The goal is functionality without visibility: a robot that helps without being noticed.</strong></p>
+            </div>
+            <div>
+                <img src="../assets/images/discret_image_01.png" alt="Discret Robot" class="product-image">
+            </div>
+        </div>
     </section>
 
-    <section class="products-grid">
-        <div class="product-card" onclick="window.location.href='dirty/'">
-            <img src="assets/logos/dirty_logo_01.png" alt="Dirty Robot" class="product-logo">
-            <h3>Dirty</h3>
-            <p class="subtitle">The Origin Prototype</p>
-            <p>The very first prototype—a Frankenstein build that validated robot-to-robot communication and autonomous transfers. The foundation for everything that followed.</p>
-            <a href="dirty/" class="btn">Learn More</a>
+    <section class="section">
+        <h3>See Discret in Action</h3>
+        <div class="video-container">
+            <video controls poster="../assets/images/discret_image_01.png">
+                <source src="../assets/videos/discret_video_01.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
+    </section>
 
-        <div class="product-card" onclick="window.location.href='discret/'">
-            <img src="assets/logos/discret_logo_01.png" alt="Discret Robot" class="product-logo">
-            <h3>Discret</h3>
-            <p class="subtitle">Invisible Utility for the Smart Home</p>
-            <p>A fully autonomous mobile robot disguised as an ordinary table. Silent, unobtrusive assistance that moves throughout your home exactly when and where needed.</p>
-            <a href="discret/" class="btn">Learn More</a>
+    <section class="section">
+        <h3>Key Features</h3>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>Disguised Design</h4>
+                <p>Appears as a normal table, integrating seamlessly into any home environment without drawing attention.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Autonomous Navigation</h4>
+                <p>Moves freely throughout your home, positioning itself exactly where utility is needed.</p>
+            </div>
+            <div class="feature-card">
+                <h4>App-Controlled</h4>
+                <p>Dedicated mobile application for scheduling, positioning, and coordinating with other smart devices.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Silent Operation</h4>
+                <p>Designed for minimal noise and disruption—assistance you feel but rarely hear or see.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Device Integration</h4>
+                <p>Seamless communication with IoT devices, smart home systems, and other autonomous units.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Adaptive Positioning</h4>
+                <p>Learns household patterns and automatically positions itself for maximum utility.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="product-card" onclick="window.location.href='lampi/'">
-            <img src="assets/logos/lampi_logo_01.png" alt="Lampi Robot" class="product-logo">
-            <h3>Lampi</h3>
-            <p class="subtitle">Light, Exactly Where You Need It</p>
-            <p>A mobile robotic lamp that delivers dynamic lighting on demand. Integrates IoT and blockchain communication to redefine lighting as a service.</p>
-            <a href="lampi/" class="btn">Learn More</a>
-        </div>
+    <section class="section">
+        <h3>Smart Home Integration</h3>
+        <div class="diagram-placeholder">
+            <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Discret Robot (center) -->
+                <rect x="275" y="150" width="150" height="100" fill="none" stroke="#00d4ff" stroke-width="3" rx="10"/>
+                <text x="350" y="190" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">DISCRET</text>
+                <text x="350" y="210" text-anchor="middle" fill="#cccccc" font-size="12">Mobile Table Robot</text>
+                <text x="350" y="228" text-anchor="middle" fill="#aaaaaa" font-size="10">Autonomous Navigation</text>
 
-        <div class="product-card" onclick="window.location.href='lorachain/'">
-            <img src="assets/logos/lorachain_logo_01.png" alt="LoRaChain" class="product-logo">
-            <h3>LoRaChain</h3>
-            <p class="subtitle">Decentralized Communication Beyond the Internet</p>
-            <p>Long-range communication network for remote environments. Enables messaging, payments, and coordination where traditional internet cannot reach.</p>
-            <a href="lorachain/" class="btn">Learn More</a>
+                <!-- Mobile App -->
+                <rect x="50" y="50" width="100" height="80" fill="none" stroke="#7b2ff7" stroke-width="2" rx="8"/>
+                <text x="100" y="85" text-anchor="middle" fill="#7b2ff7" font-size="12" font-weight="bold">Mobile App</text>
+                <text x="100" y="105" text-anchor="middle" fill="#cccccc" font-size="10">Control Hub</text>
+                <line x1="150" y1="100" x2="275" y2="180" stroke="#7b2ff7" stroke-width="2" stroke-dasharray="5,5"/>
+
+                <!-- IoT Devices -->
+                <rect x="550" y="50" width="100" height="80" fill="none" stroke="#7b2ff7" stroke-width="2" rx="8"/>
+                <text x="600" y="85" text-anchor="middle" fill="#7b2ff7" font-size="12" font-weight="bold">IoT Devices</text>
+                <text x="600" y="105" text-anchor="middle" fill="#cccccc" font-size="10">Smart Home</text>
+                <line x1="550" y1="100" x2="425" y2="180" stroke="#7b2ff7" stroke-width="2" stroke-dasharray="5,5"/>
+
+                <!-- Navigation System -->
+                <rect x="100" y="270" width="120" height="70" fill="none" stroke="#aaaaaa" stroke-width="1" rx="5"/>
+                <text x="160" y="300" text-anchor="middle" fill="#aaaaaa" font-size="11">Navigation</text>
+                <text x="160" y="316" text-anchor="middle" fill="#aaaaaa" font-size="11">Sensors</text>
+                <line x1="220" y1="300" x2="275" y2="220" stroke="#aaaaaa" stroke-width="1"/>
+
+                <!-- Power Management -->
+                <rect x="480" y="270" width="120" height="70" fill="none" stroke="#aaaaaa" stroke-width="1" rx="5"/>
+                <text x="540" y="300" text-anchor="middle" fill="#aaaaaa" font-size="11">Power</text>
+                <text x="540" y="316" text-anchor="middle" fill="#aaaaaa" font-size="11">Management</text>
+                <line x1="480" y1="300" x2="425" y2="220" stroke="#aaaaaa" stroke-width="1"/>
+
+                <!-- Communication Hub -->
+                <ellipse cx="350" cy="50" rx="80" ry="30" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                <text x="350" y="57" text-anchor="middle" fill="#00d4ff" font-size="12">Communication Hub</text>
+                <line x1="350" y1="80" x2="350" y2="150" stroke="#00d4ff" stroke-width="2"/>
+
+                <!-- Legend -->
+                <text x="350" y="365" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">Seamless Smart Home Integration</text>
+                <text x="350" y="385" text-anchor="middle" fill="#cccccc" font-size="11">Invisible utility through autonomous positioning and device coordination</text>
+            </svg>
         </div>
+    </section>
+
+    <section class="section">
+        <h3>Technical Specifications</h3>
+        <div class="tech-specs">
+            <ul>
+                <li><strong>Form Factor:</strong> Functional table with integrated robotics</li>
+                <li><strong>Mobility:</strong> Omnidirectional autonomous navigation</li>
+                <li><strong>Control Interface:</strong> Dedicated mobile application</li>
+                <li><strong>Connectivity:</strong> Wi-Fi, Bluetooth, IoT protocols</li>
+                <li><strong>Navigation:</strong> Sensor fusion for obstacle avoidance</li>
+                <li><strong>Integration:</strong> Compatible with major smart home platforms</li>
+                <li><strong>Operation:</strong> Silent, low-disruption movement</li>
+                <li><strong>Purpose:</strong> Adaptive utility positioning throughout the home</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3>Use Cases</h3>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #cccccc; margin-bottom: 1.5rem;">
+            Imagine a side table that moves to your bedside when you wake up, then relocates to your workspace when you start your day. A coffee table that positions itself perfectly for movie night, then retreats when you need floor space for exercise. Discret doesn't just respond to commands—it learns your routines and anticipates your needs.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #cccccc;">
+            In elderly care, Discret can serve as a mobile support surface, positioning itself near a person who needs stability. For smart homes, it acts as a mobile charging station or device hub. The applications are limited only by imagination—Discret is utility that adapts to life, rather than life adapting to furniture.
+        </p>
     </section>
 
     <footer>

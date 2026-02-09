@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - HyperbotResearch</title>
-    <link rel="icon" type="image/svg+xml" href="assets/HyperbotResearch.svg">
+    <title>LoRaChain - Decentralized Communication | HyperbotResearch</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/HyperbotResearch.svg">
     <style>
         * {
             margin: 0;
@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -38,24 +37,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Floating particles */
-        .particle {
-            position: fixed;
-            width: 3px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float 20s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
-        }
-
-        /* Header */
         header {
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
@@ -92,116 +73,199 @@
             font-weight: 600;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
+        .back-btn {
+            padding: 0.6rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
             text-decoration: none;
-            transition: color 0.3s;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .nav-links a:hover {
-            color: #00d4ff;
+        .back-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
         }
 
-        /* Hero Section */
-        .hero {
+        .hero-product {
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
-            text-align: center;
         }
 
-        .hero h2 {
+        .product-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .product-info h2 {
             font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #cccccc;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
-
-        /* Products Grid */
-        .products-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
-            border-color: rgba(0, 212, 255, 0.5);
-        }
-
-        .product-logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            display: block;
-            border-radius: 10px;
-        }
-
-        .product-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: #00d4ff;
-        }
-
-        .product-card .subtitle {
-            font-size: 1rem;
+        .product-info .subtitle {
+            font-size: 1.3rem;
             color: #aaaaaa;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             font-style: italic;
         }
 
-        .product-card p {
+        .product-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: #cccccc;
-            line-height: 1.6;
             margin-bottom: 1.5rem;
         }
 
-        .btn {
+        .product-image {
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #00ff88;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .feature-card h4 {
+            color: #00ff88;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .diagram-placeholder {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(0, 255, 136, 0.3);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .diagram-placeholder svg {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .btn-large {
             display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
-            color: #ffffff;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #0a0a0a;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 30px;
             transition: transform 0.3s, box-shadow 0.3s;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
 
-        .btn:hover {
+        .btn-large:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
         }
 
-        /* Footer */
+        .tech-specs {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tech-specs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-specs li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+        }
+
+        .tech-specs li:last-child {
+            border-bottom: none;
+        }
+
+        .tech-specs strong {
+            color: #00ff88;
+            margin-right: 1rem;
+        }
+
         footer {
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
@@ -215,22 +279,13 @@
             color: #888888;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .products-grid {
+            .product-header {
                 grid-template-columns: 1fr;
+            }
+
+            .product-info h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -238,71 +293,184 @@
 <body>
     <div class="animated-bg"></div>
 
-    <!-- Floating Particles -->
-    <script>
-        for(let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-            document.body.appendChild(particle);
-        }
-    </script>
-
     <header>
         <nav>
             <a href="https://hyperbotresearch.com" class="logo">
-                <img src="assets/HyperbotResearch.svg" alt="HyperbotResearch">
+                <img src="../assets/HyperbotResearch.svg" alt="HyperbotResearch">
                 <h1>HyperbotResearch</h1>
             </a>
-            <ul class="nav-links">
-                <li><a href="https://hyperbotresearch.com">Home</a></li>
-                <li><a href="https://products.hyperbotresearch.com">Products</a></li>
-                <li><a href="https://hyperbotresearch.com/roadmap">Roadmap</a></li>
-                <li><a href="https://hyperbotresearch.com/partners">Partners</a></li>
-                <li><a href="https://hyperbotresearch.com/contact">Contact</a></li>
-            </ul>
+            <a href="../" class="back-btn">← Back to Products</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <h2>Our Products</h2>
-        <p>Explore our ecosystem of autonomous robots and decentralized communication systems. From experimental prototypes to production-ready solutions, each product pushes the boundaries of what's possible with autonomous agents and blockchain technology.</p>
+    <section class="hero-product">
+        <div class="product-header">
+            <div class="product-info">
+                <h2>LoRaChain</h2>
+                <p class="subtitle">Decentralized Communication Beyond the Internet</p>
+                <p>LoRaChain is a communication device and network designed for remote environments where traditional internet access is unavailable.</p>
+                <p>Using LoRa technology for long-range, low-power communication, LoRaChain enables messaging, data exchange, and coordination across vast distances. The project is planned to operate on the Shardeum blockchain, enabling decentralized communication, payments, and trustless interactions in remote or infrastructure-limited regions.</p>
+                <p><strong>LoRaChain brings connectivity, coordination, and economic activity to places the internet cannot reach.</strong></p>
+            </div>
+            <div>
+                <img src="../assets/images/lorachain_image_01.png" alt="LoRaChain" class="product-image">
+            </div>
+        </div>
     </section>
 
-    <section class="products-grid">
-        <div class="product-card" onclick="window.location.href='dirty/'">
-            <img src="assets/logos/dirty_logo_01.png" alt="Dirty Robot" class="product-logo">
-            <h3>Dirty</h3>
-            <p class="subtitle">The Origin Prototype</p>
-            <p>The very first prototype—a Frankenstein build that validated robot-to-robot communication and autonomous transfers. The foundation for everything that followed.</p>
-            <a href="dirty/" class="btn">Learn More</a>
+    <section class="section">
+        <h3>See LoRaChain in Action</h3>
+        <div class="video-container">
+            <video controls poster="../assets/images/lorachain_image_01.png">
+                <source src="../assets/videos/lorachain_video_01.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
+    </section>
 
-        <div class="product-card" onclick="window.location.href='discret/'">
-            <img src="assets/logos/discret_logo_01.png" alt="Discret Robot" class="product-logo">
-            <h3>Discret</h3>
-            <p class="subtitle">Invisible Utility for the Smart Home</p>
-            <p>A fully autonomous mobile robot disguised as an ordinary table. Silent, unobtrusive assistance that moves throughout your home exactly when and where needed.</p>
-            <a href="discret/" class="btn">Learn More</a>
+    <section class="section">
+        <h3>Key Features</h3>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>Long-Range Communication</h4>
+                <p>LoRa technology enables communication over distances of 10+ km in rural areas without cellular or internet infrastructure.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Blockchain Integration</h4>
+                <p>Operates on Shardeum blockchain for decentralized coordination, trustless transactions, and verifiable messaging.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Low Power Consumption</h4>
+                <p>Designed for extended operation on battery power, perfect for remote deployments and emergency situations.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Mesh Network Capability</h4>
+                <p>Devices can relay messages through each other, extending range and creating resilient communication networks.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Decentralized Payments</h4>
+                <p>Enable economic transactions in remote areas through blockchain-based micropayments and smart contracts.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Emergency Resilience</h4>
+                <p>Functions independently of traditional infrastructure, critical for disaster response and remote operations.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="product-card" onclick="window.location.href='lampi/'">
-            <img src="assets/logos/lampi_logo_01.png" alt="Lampi Robot" class="product-logo">
-            <h3>Lampi</h3>
-            <p class="subtitle">Light, Exactly Where You Need It</p>
-            <p>A mobile robotic lamp that delivers dynamic lighting on demand. Integrates IoT and blockchain communication to redefine lighting as a service.</p>
-            <a href="lampi/" class="btn">Learn More</a>
-        </div>
+    <section class="section">
+        <h3>Network Architecture</h3>
+        <div class="diagram-placeholder">
+            <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                <!-- Node 1 (Mountain) -->
+                <circle cx="150" cy="150" r="40" fill="none" stroke="#00ff88" stroke-width="2"/>
+                <text x="150" y="155" text-anchor="middle" fill="#00ff88" font-size="12" font-weight="bold">NODE 1</text>
+                <text x="150" y="110" text-anchor="middle" fill="#aaaaaa" font-size="10">Remote Mountain</text>
 
-        <div class="product-card" onclick="window.location.href='lorachain/'">
-            <img src="assets/logos/lorachain_logo_01.png" alt="LoRaChain" class="product-logo">
-            <h3>LoRaChain</h3>
-            <p class="subtitle">Decentralized Communication Beyond the Internet</p>
-            <p>Long-range communication network for remote environments. Enables messaging, payments, and coordination where traditional internet cannot reach.</p>
-            <a href="lorachain/" class="btn">Learn More</a>
+                <!-- Node 2 (Forest) -->
+                <circle cx="400" cy="100" r="40" fill="none" stroke="#00ff88" stroke-width="2"/>
+                <text x="400" y="105" text-anchor="middle" fill="#00ff88" font-size="12" font-weight="bold">NODE 2</text>
+                <text x="400" y="60" text-anchor="middle" fill="#aaaaaa" font-size="10">Forest Station</text>
+
+                <!-- Node 3 (Village) -->
+                <circle cx="650" cy="150" r="40" fill="none" stroke="#00ff88" stroke-width="2"/>
+                <text x="650" y="155" text-anchor="middle" fill="#00ff88" font-size="12" font-weight="bold">NODE 3</text>
+                <text x="650" y="110" text-anchor="middle" fill="#aaaaaa" font-size="10">Remote Village</text>
+
+                <!-- Node 4 (Coast) -->
+                <circle cx="250" cy="350" r="40" fill="none" stroke="#00ff88" stroke-width="2"/>
+                <text x="250" y="355" text-anchor="middle" fill="#00ff88" font-size="12" font-weight="bold">NODE 4</text>
+                <text x="250" y="400" text-anchor="middle" fill="#aaaaaa" font-size="10">Coastal Area</text>
+
+                <!-- Node 5 (Island) -->
+                <circle cx="550" cy="350" r="40" fill="none" stroke="#00ff88" stroke-width="2"/>
+                <text x="550" y="355" text-anchor="middle" fill="#00ff88" font-size="12" font-weight="bold">NODE 5</text>
+                <text x="550" y="400" text-anchor="middle" fill="#aaaaaa" font-size="10">Island Station</text>
+
+                <!-- LoRa Communication Lines -->
+                <line x1="190" y1="150" x2="360" y2="100" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                <line x1="440" y1="100" x2="610" y2="150" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                <line x1="150" y1="190" x2="250" y2="310" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                <line x1="290" y1="350" x2="510" y2="350" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                <line x1="590" y1="350" x2="650" y2="190" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                <line x1="400" y1="140" x2="400" y2="250" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+
+                <!-- Blockchain Layer -->
+                <rect x="300" y="220" width="200" height="60" fill="rgba(123, 47, 247, 0.1)" stroke="#7b2ff7" stroke-width="2" rx="10"/>
+                <text x="400" y="245" text-anchor="middle" fill="#7b2ff7" font-size="14" font-weight="bold">Shardeum Blockchain</text>
+                <text x="400" y="265" text-anchor="middle" fill="#cccccc" font-size="10">Decentralized Coordination</text>
+
+                <!-- Range indicator -->
+                <circle cx="400" cy="100" r="120" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.2" stroke-dasharray="3,3"/>
+                <text x="520" y="100" text-anchor="start" fill="#00ff88" font-size="10" opacity="0.7">10+ km range</text>
+
+                <!-- Legend -->
+                <text x="400" y="460" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Decentralized Mesh Network</text>
+                <text x="400" y="485" text-anchor="middle" fill="#cccccc" font-size="12">Communication beyond infrastructure limits</text>
+            </svg>
         </div>
+    </section>
+
+    <section class="section">
+        <h3>Use Cases</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0;">
+            <div>
+                <h4 style="color: #00ff88; margin-bottom: 1rem;">Remote Communities</h4>
+                <p style="color: #cccccc; line-height: 1.6;">Enable communication and economic activity in areas without internet infrastructure. Coordinate resource distribution and emergency response.</p>
+            </div>
+            <div>
+                <h4 style="color: #00ff88; margin-bottom: 1rem;">Disaster Response</h4>
+                <p style="color: #cccccc; line-height: 1.6;">Maintain communication when traditional networks fail. Coordinate rescue operations and resource allocation in crisis situations.</p>
+            </div>
+            <div>
+                <h4 style="color: #00ff88; margin-bottom: 1rem;">Maritime & Aviation</h4>
+                <p style="color: #cccccc; line-height: 1.6;">Communication for ships, aircraft, and offshore platforms beyond cellular coverage. Decentralized coordination without satellite dependency.</p>
+            </div>
+            <div>
+                <h4 style="color: #00ff88; margin-bottom: 1rem;">Agricultural Operations</h4>
+                <p style="color: #cccccc; line-height: 1.6;">Sensor networks and coordination across large farms and ranches. IoT device communication in areas without broadband.</p>
+            </div>
+            <div>
+                <h4 style="color: #00ff88; margin-bottom: 1rem;">Mining & Exploration</h4>
+                <p style="color: #cccccc; line-height: 1.6;">Reliable communication in remote mining sites and geological surveys. Safety monitoring and operational coordination.</p>
+            </div>
+            <div>
+                <h4 style="color: #00ff88; margin-bottom: 1rem;">Developing Regions</h4>
+                <p style="color: #cccccc; line-height: 1.6;">Bootstrap economic activity and communication infrastructure in underserved areas. Enable micropayments and market access.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3>Technical Specifications</h3>
+        <div class="tech-specs">
+            <ul>
+                <li><strong>Communication:</strong> LoRa (Long Range) radio technology</li>
+                <li><strong>Range:</strong> 10+ km in rural areas, 2-5 km in urban environments</li>
+                <li><strong>Blockchain:</strong> Shardeum network integration</li>
+                <li><strong>Power:</strong> Ultra-low power consumption, battery or solar powered</li>
+                <li><strong>Data Rate:</strong> 0.3 - 50 kbps (optimized for messaging and coordination)</li>
+                <li><strong>Network Type:</strong> Mesh topology with multi-hop capability</li>
+                <li><strong>Encryption:</strong> End-to-end encrypted messaging</li>
+                <li><strong>Use Cases:</strong> Messaging, payments, sensor data, emergency coordination</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h3>Explore the Full LoRaChain Project</h3>
+        <p>LoRaChain is an extensive project with detailed technical documentation, code repositories, and development roadmap. Visit the dedicated GitHub repository to explore the complete implementation.</p>
+        <a href="https://github.com/BrunoMarshall/LoraChain" target="_blank" class="btn-large">Visit LoRaChain Repository →</a>
+    </section>
+
+    <section class="section">
+        <h3>Why LoRaChain Matters</h3>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #cccccc; margin-bottom: 1.5rem;">
+            Over half of the world's population still lacks reliable internet access. In remote regions, emergency situations, and infrastructure-limited areas, traditional communication networks simply don't exist—or fail when needed most. LoRaChain solves this fundamental problem.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #cccccc;">
+            By combining long-range radio technology with blockchain-based coordination, LoRaChain creates communication and economic networks that operate independently of centralized infrastructure. It enables communities to coordinate, transact, and communicate where the internet cannot reach. This isn't just technology—it's infrastructure independence. It's resilience. It's connection where there was none.
+        </p>
     </section>
 
     <footer>

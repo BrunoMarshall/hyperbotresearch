@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - HyperbotResearch</title>
-    <link rel="icon" type="image/svg+xml" href="assets/HyperbotResearch.svg">
+    <title>Dirty - The Origin Prototype | HyperbotResearch</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/HyperbotResearch.svg">
     <style>
         * {
             margin: 0;
@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -38,24 +37,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Floating particles */
-        .particle {
-            position: fixed;
-            width: 3px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float 20s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
-        }
-
-        /* Header */
         header {
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
@@ -92,116 +73,161 @@
             font-weight: 600;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
+        .back-btn {
+            padding: 0.6rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
             text-decoration: none;
-            transition: color 0.3s;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .nav-links a:hover {
-            color: #00d4ff;
+        .back-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
         }
 
-        /* Hero Section */
-        .hero {
+        .hero-product {
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
-            text-align: center;
         }
 
-        .hero h2 {
+        .product-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .product-info h2 {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             background: linear-gradient(135deg, #00d4ff, #7b2ff7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #cccccc;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
-
-        /* Products Grid */
-        .products-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
-            border-color: rgba(0, 212, 255, 0.5);
-        }
-
-        .product-logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            display: block;
-            border-radius: 10px;
-        }
-
-        .product-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: #00d4ff;
-        }
-
-        .product-card .subtitle {
-            font-size: 1rem;
+        .product-info .subtitle {
+            font-size: 1.3rem;
             color: #aaaaaa;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             font-style: italic;
         }
 
-        .product-card p {
+        .product-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: #cccccc;
-            line-height: 1.6;
             margin-bottom: 1.5rem;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-weight: 600;
+        .product-image {
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        .section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
         }
 
-        /* Footer */
+        .section h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #00d4ff;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .feature-card h4 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .diagram-placeholder {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .diagram-placeholder svg {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        .tech-specs {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tech-specs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-specs li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+        }
+
+        .tech-specs li:last-child {
+            border-bottom: none;
+        }
+
+        .tech-specs strong {
+            color: #00d4ff;
+            margin-right: 1rem;
+        }
+
         footer {
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
@@ -215,22 +241,13 @@
             color: #888888;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .products-grid {
+            .product-header {
                 grid-template-columns: 1fr;
+            }
+
+            .product-info h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -238,71 +255,124 @@
 <body>
     <div class="animated-bg"></div>
 
-    <!-- Floating Particles -->
-    <script>
-        for(let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-            document.body.appendChild(particle);
-        }
-    </script>
-
     <header>
         <nav>
             <a href="https://hyperbotresearch.com" class="logo">
-                <img src="assets/HyperbotResearch.svg" alt="HyperbotResearch">
+                <img src="../assets/HyperbotResearch.svg" alt="HyperbotResearch">
                 <h1>HyperbotResearch</h1>
             </a>
-            <ul class="nav-links">
-                <li><a href="https://hyperbotresearch.com">Home</a></li>
-                <li><a href="https://products.hyperbotresearch.com">Products</a></li>
-                <li><a href="https://hyperbotresearch.com/roadmap">Roadmap</a></li>
-                <li><a href="https://hyperbotresearch.com/partners">Partners</a></li>
-                <li><a href="https://hyperbotresearch.com/contact">Contact</a></li>
-            </ul>
+            <a href="../" class="back-btn">← Back to Products</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <h2>Our Products</h2>
-        <p>Explore our ecosystem of autonomous robots and decentralized communication systems. From experimental prototypes to production-ready solutions, each product pushes the boundaries of what's possible with autonomous agents and blockchain technology.</p>
+    <section class="hero-product">
+        <div class="product-header">
+            <div class="product-info">
+                <h2>Dirty</h2>
+                <p class="subtitle">The Origin Prototype</p>
+                <p>Dirty is the very first prototype in the robotics ecosystem—a true Frankenstein build created to validate core technologies before refinement. Its primary purpose was experimentation: testing robot-to-robot communication, data exchange, and autonomous transfers between units.</p>
+                <p>Dirty laid the foundation for everything that followed. It proved that decentralized communication between robots was not only possible, but scalable—serving as the backbone concept for future, more refined designs.</p>
+            </div>
+            <div>
+                <img src="../assets/images/dirty_image_01.png" alt="Dirty Robot" class="product-image">
+            </div>
+        </div>
     </section>
 
-    <section class="products-grid">
-        <div class="product-card" onclick="window.location.href='dirty/'">
-            <img src="assets/logos/dirty_logo_01.png" alt="Dirty Robot" class="product-logo">
-            <h3>Dirty</h3>
-            <p class="subtitle">The Origin Prototype</p>
-            <p>The very first prototype—a Frankenstein build that validated robot-to-robot communication and autonomous transfers. The foundation for everything that followed.</p>
-            <a href="dirty/" class="btn">Learn More</a>
+    <section class="section">
+        <h3>See Dirty in Action</h3>
+        <div class="video-container">
+            <video controls poster="../assets/images/dirty_image_01.png">
+                <source src="../assets/videos/dirty_video_01.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
+    </section>
 
-        <div class="product-card" onclick="window.location.href='discret/'">
-            <img src="assets/logos/discret_logo_01.png" alt="Discret Robot" class="product-logo">
-            <h3>Discret</h3>
-            <p class="subtitle">Invisible Utility for the Smart Home</p>
-            <p>A fully autonomous mobile robot disguised as an ordinary table. Silent, unobtrusive assistance that moves throughout your home exactly when and where needed.</p>
-            <a href="discret/" class="btn">Learn More</a>
+    <section class="section">
+        <h3>Key Features</h3>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>Robot-to-Robot Communication</h4>
+                <p>First successful implementation of autonomous communication protocols between multiple robot units.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Data Exchange Protocol</h4>
+                <p>Experimental framework for sharing sensor data, status updates, and coordination messages.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Autonomous Transfers</h4>
+                <p>Proof of concept for autonomous resource allocation and task distribution between units.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Foundation Architecture</h4>
+                <p>Modular design that became the template for all subsequent robot development.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="product-card" onclick="window.location.href='lampi/'">
-            <img src="assets/logos/lampi_logo_01.png" alt="Lampi Robot" class="product-logo">
-            <h3>Lampi</h3>
-            <p class="subtitle">Light, Exactly Where You Need It</p>
-            <p>A mobile robotic lamp that delivers dynamic lighting on demand. Integrates IoT and blockchain communication to redefine lighting as a service.</p>
-            <a href="lampi/" class="btn">Learn More</a>
-        </div>
+    <section class="section">
+        <h3>System Architecture</h3>
+        <div class="diagram-placeholder">
+            <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Robot 1 -->
+                <rect x="50" y="150" width="120" height="100" fill="none" stroke="#00d4ff" stroke-width="2" rx="10"/>
+                <text x="110" y="190" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">DIRTY #1</text>
+                <text x="110" y="210" text-anchor="middle" fill="#cccccc" font-size="11">Communication</text>
+                <text x="110" y="225" text-anchor="middle" fill="#cccccc" font-size="11">Module</text>
 
-        <div class="product-card" onclick="window.location.href='lorachain/'">
-            <img src="assets/logos/lorachain_logo_01.png" alt="LoRaChain" class="product-logo">
-            <h3>LoRaChain</h3>
-            <p class="subtitle">Decentralized Communication Beyond the Internet</p>
-            <p>Long-range communication network for remote environments. Enables messaging, payments, and coordination where traditional internet cannot reach.</p>
-            <a href="lorachain/" class="btn">Learn More</a>
+                <!-- Robot 2 -->
+                <rect x="430" y="150" width="120" height="100" fill="none" stroke="#00d4ff" stroke-width="2" rx="10"/>
+                <text x="490" y="190" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">DIRTY #2</text>
+                <text x="490" y="210" text-anchor="middle" fill="#cccccc" font-size="11">Communication</text>
+                <text x="490" y="225" text-anchor="middle" fill="#cccccc" font-size="11">Module</text>
+
+                <!-- Communication Lines -->
+                <line x1="170" y1="180" x2="430" y2="180" stroke="#7b2ff7" stroke-width="2" stroke-dasharray="5,5"/>
+                <text x="300" y="170" text-anchor="middle" fill="#7b2ff7" font-size="12">Data Exchange</text>
+                
+                <line x1="170" y1="200" x2="430" y2="200" stroke="#00d4ff" stroke-width="2"/>
+                <text x="300" y="195" text-anchor="middle" fill="#00d4ff" font-size="12">Autonomous Protocol</text>
+                
+                <line x1="170" y1="220" x2="430" y2="220" stroke="#7b2ff7" stroke-width="2" stroke-dasharray="5,5"/>
+                <text x="300" y="238" text-anchor="middle" fill="#7b2ff7" font-size="12">Resource Transfer</text>
+
+                <!-- Sensors -->
+                <circle cx="110" cy="120" r="20" fill="none" stroke="#aaaaaa" stroke-width="1"/>
+                <text x="110" y="125" text-anchor="middle" fill="#aaaaaa" font-size="10">Sensors</text>
+                <line x1="110" y1="140" x2="110" y2="150" stroke="#aaaaaa" stroke-width="1"/>
+
+                <circle cx="490" cy="120" r="20" fill="none" stroke="#aaaaaa" stroke-width="1"/>
+                <text x="490" y="125" text-anchor="middle" fill="#aaaaaa" font-size="10">Sensors</text>
+                <line x1="490" y1="140" x2="490" y2="150" stroke="#aaaaaa" stroke-width="1"/>
+
+                <!-- Legend -->
+                <text x="300" y="330" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Decentralized Communication Architecture</text>
+                <text x="300" y="360" text-anchor="middle" fill="#cccccc" font-size="12">Experimental prototype validating autonomous robot-to-robot protocols</text>
+            </svg>
         </div>
+    </section>
+
+    <section class="section">
+        <h3>Technical Specifications</h3>
+        <div class="tech-specs">
+            <ul>
+                <li><strong>Purpose:</strong> Experimental prototype for validation</li>
+                <li><strong>Communication:</strong> Custom robot-to-robot protocol</li>
+                <li><strong>Data Exchange:</strong> Real-time sensor sharing and status updates</li>
+                <li><strong>Architecture:</strong> Modular, decentralized design</li>
+                <li><strong>Key Innovation:</strong> Autonomous transfer capabilities between units</li>
+                <li><strong>Legacy:</strong> Foundation for all subsequent robot development</li>
+                <li><strong>Status:</strong> Proof of concept completed</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3>The Legacy</h3>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #cccccc;">
+            While Dirty may look like a collection of parts held together with determination and duct tape, it represents something far more significant. This prototype proved that autonomous robots could communicate, coordinate, and transfer resources without centralized control. Every robot that followed—from Discret's invisible utility to Lampi's dynamic lighting—stands on the foundation Dirty built. It wasn't pretty, but it worked. And sometimes, that's exactly what matters most.
+        </p>
     </section>
 
     <footer>
