@@ -31,8 +31,19 @@
                 <p>Dirty is the very first prototype in the robotics ecosystem—a true Frankenstein build created to validate core technologies before refinement. Its primary purpose was experimentation: testing robot-to-robot communication, data exchange, and autonomous transfers between units.</p>
                 <p>Dirty laid the foundation for everything that followed. It proved that decentralized communication between robots was not only possible, but scalable—serving as the backbone concept for future, more refined designs.</p>
             </div>
-            <div>
-                <img src="../assets/images/dirty_image_01.png" alt="Dirty Robot" class="product-image">
+            <div class="image-gallery">
+                <div class="gallery-container">
+                    <img src="../assets/images/dirty_image_01.png" alt="Dirty Robot - View 1" class="gallery-image active">
+                    <img src="../assets/images/dirty_image_02.png" alt="Dirty Robot - View 2" class="gallery-image">
+                    <img src="../assets/images/dirty_image_03.png" alt="Dirty Robot - View 3" class="gallery-image">
+                    <button class="gallery-btn prev" onclick="changeImage(-1)">❮</button>
+                    <button class="gallery-btn next" onclick="changeImage(1)">❯</button>
+                </div>
+                <div class="gallery-dots">
+                    <span class="dot active" onclick="currentImage(0)"></span>
+                    <span class="dot" onclick="currentImage(1)"></span>
+                    <span class="dot" onclick="currentImage(2)"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -132,6 +143,37 @@
             While Dirty may look like a collection of parts held together with determination and duct tape, it represents something far more significant. This prototype proved that autonomous robots could communicate, coordinate, and transfer resources without centralized control. Every robot that followed—from Discret's invisible utility to Lampi's dynamic lighting—stands on the foundation Dirty built. It wasn't pretty, but it worked. And sometimes, that's exactly what matters most.
         </p>
     </section>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.gallery-image');
+        const dots = document.querySelectorAll('.dot');
+
+        function showImage(index) {
+            images.forEach(img => img.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            images[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            showImage(currentIndex);
+        }
+
+        function currentImage(index) {
+            currentIndex = index;
+            showImage(index);
+        }
+
+        // Auto-advance gallery every 5 seconds
+        setInterval(() => {
+            changeImage(1);
+        }, 5000);
+    </script>
 
     <footer>
         <p>&copy; 2025 HyperbotResearch. Autonomous Agents. Decentralized Future.</p>

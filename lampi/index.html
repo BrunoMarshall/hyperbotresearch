@@ -31,8 +31,19 @@
                 <p>Lampi is a mobile robotic lamp designed to deliver light dynamically. Instead of fixed lighting, Lampi moves to wherever illumination is required—automatically and on demand.</p>
                 <p>It integrates IoT connectivity and blockchain-based communication, enabling smart coordination with other devices and systems. Whether for efficiency, comfort, or automation, Lampi redefines lighting as a service rather than a static fixture.</p>
             </div>
-            <div>
-                <img src="../assets/images/lampi_image_01.png" alt="Lampi Robot" class="product-image">
+            <div class="image-gallery">
+                <div class="gallery-container">
+                    <img src="../assets/images/lampi_image_01.png" alt="Lampi Robot - View 1" class="gallery-image active">
+                    <img src="../assets/images/lampi_image_02.png" alt="Lampi Robot - View 2" class="gallery-image">
+                    <img src="../assets/images/lampi_image_03.png" alt="Lampi Robot - View 3" class="gallery-image">
+                    <button class="gallery-btn prev" onclick="changeImage(-1)">❮</button>
+                    <button class="gallery-btn next" onclick="changeImage(1)">❯</button>
+                </div>
+                <div class="gallery-dots">
+                    <span class="dot active" onclick="currentImage(0)"></span>
+                    <span class="dot" onclick="currentImage(1)"></span>
+                    <span class="dot" onclick="currentImage(2)"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -169,6 +180,37 @@
             Lampi represents a fundamental shift in how we think about illumination. For over a century, lighting has been fixed—mounted to ceilings, attached to walls, stationary on desks. Lampi breaks free from this constraint. It doesn't just turn on and off; it understands context, anticipates needs, and positions itself with precision. Blockchain integration enables Lampi units to coordinate autonomously, creating dynamic lighting networks that respond to changing environments without centralized control. This is lighting that thinks, moves, and adapts—exactly as it should be.
         </p>
     </section>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.gallery-image');
+        const dots = document.querySelectorAll('.dot');
+
+        function showImage(index) {
+            images.forEach(img => img.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            images[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            showImage(currentIndex);
+        }
+
+        function currentImage(index) {
+            currentIndex = index;
+            showImage(index);
+        }
+
+        // Auto-advance gallery every 5 seconds
+        setInterval(() => {
+            changeImage(1);
+        }, 5000);
+    </script>
 
     <footer>
         <p>&copy; 2025 HyperbotResearch. Autonomous Agents. Decentralized Future.</p>

@@ -32,8 +32,19 @@
                 <p>Discret can move freely throughout the home, navigating to any area where it is needed. It integrates seamless communication between devices and is controlled through a dedicated app, enabling silent, unobtrusive assistance without disrupting daily life.</p>
                 <p><strong>The goal is functionality without visibility: a robot that helps without being noticed.</strong></p>
             </div>
-            <div>
-                <img src="../assets/images/discret_image_01.png" alt="Discret Robot" class="product-image">
+            <div class="image-gallery">
+                <div class="gallery-container">
+                    <img src="../assets/images/discret_image_01.png" alt="Discret Robot - View 1" class="gallery-image active">
+                    <img src="../assets/images/discret_image_02.png" alt="Discret Robot - View 2" class="gallery-image">
+                    <img src="../assets/images/discret_image_03.png" alt="Discret Robot - View 3" class="gallery-image">
+                    <button class="gallery-btn prev" onclick="changeImage(-1)">❮</button>
+                    <button class="gallery-btn next" onclick="changeImage(1)">❯</button>
+                </div>
+                <div class="gallery-dots">
+                    <span class="dot active" onclick="currentImage(0)"></span>
+                    <span class="dot" onclick="currentImage(1)"></span>
+                    <span class="dot" onclick="currentImage(2)"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -149,6 +160,37 @@
             In elderly care, Discret can serve as a mobile support surface, positioning itself near a person who needs stability. For smart homes, it acts as a mobile charging station or device hub. The applications are limited only by imagination—Discret is utility that adapts to life, rather than life adapting to furniture.
         </p>
     </section>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.gallery-image');
+        const dots = document.querySelectorAll('.dot');
+
+        function showImage(index) {
+            images.forEach(img => img.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            images[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            showImage(currentIndex);
+        }
+
+        function currentImage(index) {
+            currentIndex = index;
+            showImage(index);
+        }
+
+        // Auto-advance gallery every 5 seconds
+        setInterval(() => {
+            changeImage(1);
+        }, 5000);
+    </script>
 
     <footer>
         <p>&copy; 2025 HyperbotResearch. Autonomous Agents. Decentralized Future.</p>
